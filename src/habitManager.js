@@ -23,6 +23,18 @@ class HabitManager {
     return habit
   }
 
+  getHabit(habitId) {
+    return this.habits.get(habitId)
+  }
+
+  getAllHabits() {
+    return Array.from(this.habits.values())
+  }
+
+  deleteHabit(habitId) {
+    return (!this.habits.delete(habitId))
+  }
+
   _getHabitOrThrow(habitId) {
     if (!habitId || typeof habitId !== 'string') {
       throw new Error('Habit ID must be a non-empty string.')
