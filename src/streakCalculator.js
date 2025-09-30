@@ -40,6 +40,36 @@ class StreakCalculator {
     return currentStreak
   }
 
+  static isStreakBroken(completions, allowMissedDays = false, maxMissedDays = 0) {
+    if (!completions || completions.length === 0) { 
+      return true
+    }
+
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+
+    if (this._hasCompletionOnDate(completions, today)) {
+      return false
+    }
+
+    const yesterday = new Date(today)
+    yesterday.setDate(yesterday.getDate() - 1)
+
+    if (this._hasCompletionOnDate(completions, yesterday)) {
+      return !allowMissedDays || maxMissedDays < 1
+    }
+
+    const sortedCompletions = [...completions].sort((a, b) => a - b)
+    const lastCompletion = sortedCompletions[sortedCompletions.length - 1]
+    const daysSince = this._daysBetween(today, lastCompletion)
+
+    if (allowMissedDays) {
+      return daysSince > (maxMissedDays + 1)
+    }
+
+    return daysSince > 1
+  }
+
   static _hasCompletionOnDate(completions, targetDate) {
     return completions.some(completion => {
       const compDate = new Date(completion)
