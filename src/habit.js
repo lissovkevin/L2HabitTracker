@@ -6,4 +6,36 @@ class Habit {
     this.allowMissedDays = options.allowMissedDays || false
     this.maxMissedDays = options.maxMissedDays || 0
   }
+
+  addCompletion(date) {
+    const completionDate = new Date(date)
+    completionDate.setHours(0, 0, 0, 0)
+
+    if (this.hasCompletionOnDate(completionDate))  {
+      return false
+    }
+
+    this.completions.push(completionDate)
+
+    return true
+  }
+
+  hasCompletionOnDate(date) {
+    const targetDate = new Date(date)
+    targetDate.setHours(0, 0, 0, 0)
+
+    return this.completions.some(completion =>
+      this._isSameDay(completion, targetDate)
+    )
+  }
+  
+  _isSameDay(date1, date2) {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()      
+    )
+  }
 }
+
+module.exports = Habit
