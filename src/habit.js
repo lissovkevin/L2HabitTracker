@@ -20,6 +20,18 @@ class Habit {
     return true
   }
 
+  removeCompletion(date) {
+    const targetDate = new Date(date)
+    targetDate.setHours(0, 0, 0, 0)
+
+    const initialLength = this.completions.length
+    this.completions = this.completions.filter(completion =>
+      !this._isSameDay(completion, targetDate)
+    )
+
+    return this.completions.length < initialLength
+  }
+
   hasCompletionOnDate(date) {
     const targetDate = new Date(date)
     targetDate.setHours(0, 0, 0, 0)
