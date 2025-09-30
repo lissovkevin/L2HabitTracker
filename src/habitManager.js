@@ -1,4 +1,5 @@
-const habit = require('./habit.js')
+const Habit = require('./habit.js')
+const StreakCalculator = require('./streakCalculator.js')
 
 class HabitManager {
   constructor() {
@@ -36,6 +37,24 @@ class HabitManager {
     }
 
     return habit.removeCompletion(date)
+  }
+
+  getCurrentStreak(habitId) {
+    const habit = this._getHabitOrThrow(habitId)
+    return StreakCalculator.getCurrentStreak(
+      habit.getCompletions(),
+      habit.allowMissedDays,
+      habit.maxMissedDays
+    )
+  }
+
+  isStreakBroken(habitId) {
+    const habit = this._getHabitOrThrow(habitId)
+    return StreakCalculator.isStreakBroken(
+      habit.getCompletions(),
+      habit.allowMissedDays,
+      habit.maxMissedDays
+    )
   }
 
   getHabit(habitId) {
