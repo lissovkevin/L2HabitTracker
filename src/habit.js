@@ -16,7 +16,7 @@ class Habit {
     }
 
     this.completions.push(completionDate)
-
+    this._sortCompletions()
     return true
   }
 
@@ -35,7 +35,7 @@ class Habit {
   getCompletions() {
     return [...this.completions]
   }
-  
+
   hasCompletionOnDate(date) {
     const targetDate = new Date(date)
     targetDate.setHours(0, 0, 0, 0)
@@ -51,6 +51,10 @@ class Habit {
       date1.getMonth() === date2.getMonth() &&
       date1.getDate() === date2.getDate()      
     )
+  }
+
+  _sortCompletions() {
+    this.completions.sort((a, b) => a - b) 
   }
 }
 
