@@ -23,6 +23,21 @@ class HabitManager {
     return habit
   }
 
+  addCompletion(habitId, date = new Date()) {
+    const habit = this._getHabitOrThrow(habitId)
+    return habit.addCompletion(date)
+  }
+
+  removeCompletion(habitId, date) {
+    const habit = this._getHabitOrThrow(habitId)
+
+    if (!date) {
+      throw new Error('Date is required to remove a completion.')
+    }
+
+    return habit.removeCompletion(date)
+  }
+
   getHabit(habitId) {
     return this.habits.get(habitId)
   }
