@@ -1,5 +1,5 @@
 class StreakCalculator {
-  static getCurrentStreak(completions) {
+  static getCurrentStreak(completions, allowMissedDays = false, maxMissedDays = 0) {
     if (!completions || completions.length === 0) {
       return 0
     }
@@ -9,6 +9,7 @@ class StreakCalculator {
 
     let currentStreak = 0
     let currentDate = new Date(today)
+    let missedDaysCount = 0
 
     if (!this._hasCompletionOnDate(completions, today)) {
       currentDate.setDate(currentDate.getDate() - 1)
@@ -20,9 +21,13 @@ class StreakCalculator {
     while (true) {
       if (this._hasCompletionOnDate(completions, currentDate)) {
         currentStreak++
-
+        missedDaysCount = 0
       } else {
-        break
+        if (allowMissedDays && missedDaysCount < maxMissedDays) {
+          missedDaysCount++
+        } else {
+          break
+        }
       }
 
       currentDate.setDate(currentDate.getDate() - 1)
@@ -34,14 +39,6 @@ class StreakCalculator {
 
     return currentStreak
   }
-
-
-
-
-
-
-
-
 
   static _hasCompletionOnDate(completions, targetDate) {
     return completions.some(completion => {
