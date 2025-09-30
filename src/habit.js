@@ -32,6 +32,10 @@ class Habit {
     return this.completions.length < initialLength
   }
 
+  getCompletions() {
+    return [...this.completions]
+  }
+  
   hasCompletionOnDate(date) {
     const targetDate = new Date(date)
     targetDate.setHours(0, 0, 0, 0)
