@@ -115,8 +115,7 @@ habitManager.getAllHabits().forEach((habit) => {
 Run the test application:
 
 ```bash
-cd test-app
-node testApp.js
+npm run start
 ```
 
 ## Requirements
