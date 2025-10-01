@@ -1,5 +1,13 @@
 # Reflektion: Kodkvalitet och Clean Code
 
+## Innehåll
+
+- [1. Tabellreflektion för namngivning (Kapitel 2)](#1-tabellreflektion-för-namngivning-kapitel-2)
+- [2. Kapitelreflektion för Kapitel 2: Meaningful Names](#2-kapitelreflektion-för-kapitel-2-meaningful-names)
+- [3. Tabellreflektion för funktioner/metoder (Kapitel 3)](#3-tabellreflektion-för-funktionermetoder-kapitel-3)
+- [4. Kapitelreflektion för Kapitel 3: Functions](#4-kapitelreflektion-för-kapitel-3-functions)
+- [5. Reflektion över egen kodkvalitet](#5-reflektion-över-egen-kodkvalitet)
+
 ## 1. Tabellreflektion för namngivning (Kapitel 2)
 
 | Namn               | Förklaring                         | Reflektion och regler från Clean Code                                                                                                                                                                                                                                                                          |
