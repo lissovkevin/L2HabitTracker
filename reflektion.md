@@ -47,3 +47,18 @@ Använd datavetenskapliga termer som andra programmerare förstår. Namn behöve
 
 **Min reflektion:**
 Efter att ha läst detta kapitel inser jag att jag ibland använder förkortningar som gör koden svårare att förstå, och att jag inte alltid är konsekvent med terminologi. Vissa av mina variabelnamn saknar tillräcklig kontext. Det viktigaste jag tar med mig är att välvalda namn eliminerar behovet av kommentarer - koden blir självförklarande. Att spendera tid på namngivning är en investering som betalar sig i läsbarhet.
+
+---
+
+## 3. Tabellreflektion för funktioner/metoder (Kapitel 3)
+
+| Metodnamn | Rader | Argument | Reflektion och regler från Clean Code |
+|-----------|-------|----------|----------------------------------------|
+| `addCompletion(habitName, date)` | 12 | 2 | **Small (s. 34-35)**: OK storlek. **Dyadic (s. 42)**: Acceptabelt. **Do One Thing (s. 35-36)**: Validering kunde extraheras. |
+| `calculateStreak(completionDates)` | 28 | 1 | **Small (s. 34-35)**: För lång. **Monadic (s. 41)**: Bra form. **Abstraction (s. 36-37)**: Blandar nivåer - bör delas upp. |
+| `getHabits()` | 3 | 0 | **Small (s. 34-35)**: Perfekt. **Niladic (s. 40-41)**: Idealiskt. **Command Query (s. 45-46)**: Perfekt query. |
+| `removeHabit(habitName)` | 8 | 1 | **Small (s. 34-35)**: Bra. **Monadic (s. 41)**: Korrekt. **No Side Effects (s. 44-45)**: Gör vad namnet säger. |
+| `isCompletedOn(habitName, date)` | 15 | 2 | **Small (s. 34-35)**: OK. **Dyadic (s. 42)**: Nödvändigt. **Command Query (s. 45-46)**: Korrekt query. |
+
+### Reflektion
+Majoriteten är små och fokuserade. `calculateStreak` är för lång och blandar abstraktionsnivåer. Duplicerad validering bör extraheras enligt DRY (s. 48).
