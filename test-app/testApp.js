@@ -59,6 +59,19 @@ runTest('T003', 'Prevent duplicate habits', () => {
   }
 })
 
+// T004
+runTest('T004', 'Validate empty habit ID', () => {
+  try {
+    habitManager.createHabit('', 'Empty ID')
+    return { success: false, message: 'No error thrown for empty ID' }
+  } catch (error) {
+    return {
+      success: error.message.includes('non-empty string'),
+      message: `Correctly validated empty ID: ${error.message}`
+    }
+  }
+})
+
 // T006
 runTest('T006', 'Add completion for today', () => {
   const today = new Date()
@@ -77,6 +90,19 @@ runTest('T007', 'Add completion for yesterday', () => {
   return {
     success: result === true,
     message: `Completion added for yesterday: ${result}`
+  }
+})
+
+// T010
+runTest('T010', 'Error for non-existent habit', () => {
+  try {
+    habitManager.addCompletion('nonexistent', new Date())
+    return { success: false, message: 'No error thrown for non-existent habit' }
+  } catch (error) {
+    return {
+      success: error.message.includes("not found"),
+      message: `Correctly handled non-existent habit: ${error.message}`
+    }
   }
 })
 

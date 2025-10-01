@@ -8,7 +8,7 @@ Modulen har testats genom en kombinerad approach med automatiserad TestApp och m
 
 **Testmiljö:** Node.js på Windows
 
-**Testresultat:** 5 av 5 testfall godkända (100% framgångsrate).
+**Testresultat:** 7 av 7 testfall godkända.
 
 ## Detaljerade testresultat
 
@@ -17,8 +17,10 @@ Modulen har testats genom en kombinerad approach med automatiserad TestApp och m
 | T001    | Skapa grundläggande habit      | `createHabit('exercise', 'Daily Exercise')`                                    | Habit objekt med korrekta värden | Habit skapas med id='exercise', name='Daily Exercise' | ✅ PASS |
 | T002    | Skapa habit med options        | `createHabit('reading', 'Reading', {allowMissedDays: true, maxMissedDays: 2})` | Options konfigureras korrekt     | allowMissedDays=true, maxMissedDays=2                 | ✅ PASS |
 | T003    | Förhindra dubbletter           | Försök skapa habit med samma ID igen                                           | Error kastas                     | Error: "Habit with ID 'exercise' already exists."     | ✅ PASS |
+| T004    | Validera tom habit ID          | `createHabit('', 'Empty ID')`                                                  | Error kastas                     | Error: "Habit ID must be a non-empty string."         | ✅ PASS |
 | T006    | Lägg till completion idag      | `addCompletion('exercise', new Date())`                                        | Returnerar true                  | Completion tillagd framgångsrikt                      | ✅ PASS |
 | T007    | Lägg till completion igår      | `addCompletion('exercise', yesterday)`                                         | Returnerar true                  | Completion tillagd för specifikt datum                | ✅ PASS |
+| T010    | Fel för obefintlig habit       | `addCompletion('nonexistent', new Date())`                                     | Error kastas                     | Error: "Habit with ID 'nonexistent' not found."       | ✅ PASS |
 
 ## Kända begränsningar
 
