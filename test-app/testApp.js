@@ -1,7 +1,30 @@
-// Simple Test Application for Habit Tracker Module
+//Test Application for Habit Tracker Module
 const habitManager = require('../src/index.js')
 
-console.log('Test app for the Habit Tracker Module\n')
+console.log('Testing App for the Habit Tracker Module\n')
+
+// Test tracking
+let totalTests = 0
+let passedTests = 0
+
+function runTest(testId, description, testFunction) {
+  totalTests++
+  console.log(`[${testId}] Testing: ${description}`)
+
+  try {
+    const result = testFunction()
+    if (result.success) {
+      console.log(`✅ PASS - ${result.message}`)
+      passedTests++
+    } else {
+      console.log(`❌ FAIL - ${result.message}`)
+    }
+  } catch (error) {
+    console.log(`❌ ERROR - ${error.message}`)
+  }
+  console.log('---')
+}
+
 
 // Test 1
 console.log('1. Creating habits...')
