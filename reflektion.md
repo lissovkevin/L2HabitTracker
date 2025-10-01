@@ -1,0 +1,14 @@
+# Reflektion: Kodkvalitet och Clean Code
+
+## 1. Tabellreflektion för namngivning (Kapitel 2)
+
+| Namn               | Förklaring                         | Reflektion och regler från Clean Code                                                                                                                                                                                                                                                                          |
+| ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HabitManager`     | Klassnamn på huvudklassen          | **Class Names (s. 25)**: Följer substantiv-regeln men använder "Manager" vilket boken avråder från. **Avoid Disinformation**: "Manager" är vagt och säger inget om vad klassen faktiskt gör. Bättre: `HabitTracker` eller `HabitRepository`.                                                                   |
+| `createHabit`      | Metod för att skapa ny vana        | **Use Intention-Revealing Names (s. 18)**: Tydligt vad metoden gör. **Method Names (s. 25)**: Perfekt verb-substantiv kombination. **Make Meaningful Distinctions (s. 20)**: Skiljer sig tydligt från `getHabit` och `deleteHabit`.                                                                            |
+| `habitId`          | Parameter för vanans identifierare | **Use Searchable Names (s. 22)**: Mycket lättare att söka än bara "id". **Avoid Mental Mapping (s. 23)**: Ingen översättning behövs - namnet är självförklarande. **Don't Be Cute (s. 21)**: Rakt på sak utan onödiga förkortningar.                                                                           |
+| `getCurrentStreak` | Hämtar aktuell streak-längd        | **Use Intention-Revealing Names**: Perfekt - beskriver både vad (get), vilket objekt (Streak) och vilken variant (Current). **Avoid Disinformation (s. 19)**: "Current" eliminerar förvirring med historiska streaks. **Use Problem Domain Names (s. 27)**: "Streak" är etablerat begrepp inom habit tracking. |
+| `isStreakBroken`   | Kontrollerar om streak är bruten   | **Method Names (s. 25)**: Följer boolean-konvention med "is"-prefix. **Use Intention-Revealing Names**: Läses som naturlig engelska - "is streak broken?". **Pick One Word per Concept**: Konsekvent användning av "streak" genom hela API:et istället för synonymer som "chain" eller "sequence".             |
+
+### Reflektion
+Jag använder konsekvent terminologi vilket är bra, men som sagt bryter `HabitManager` mot bokens råd om att undvika "Manager". Vissa interna variabel namn saknar kotext och kan förbättras
