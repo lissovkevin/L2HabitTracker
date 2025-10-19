@@ -1,5 +1,5 @@
 class Habit {
-  constructor(id, name ,options = {}) {
+  constructor(id, name, options = {}) {
     this.id = id
     this.name = name
     this.completions = []
@@ -11,7 +11,7 @@ class Habit {
     const completionDate = new Date(date)
     completionDate.setHours(0, 0, 0, 0)
 
-    if (this.hasCompletionOnDate(completionDate))  {
+    if (this.hasCompletionOnDate(completionDate)) {
       return false
     }
 
@@ -44,18 +44,18 @@ class Habit {
       this._isSameDay(completion, targetDate)
     )
   }
-  
+
   _isSameDay(date1, date2) {
     return (
       date1.getFullYear() === date2.getFullYear() &&
       date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate()      
+      date1.getDate() === date2.getDate()
     )
   }
 
   _sortCompletions() {
-    this.completions.sort((a, b) => a - b) 
+    this.completions.sort((a, b) => a - b)
   }
 }
 
-module.exports = Habit
+export default Habit

@@ -1,5 +1,5 @@
-const Habit = require('./habit.js')
-const StreakCalculator = require('./streakCalculator.js')
+import Habit from './habit.js'
+import StreakCalculator from './streakCalculator.js'
 
 class HabitManager {
   constructor() {
@@ -83,4 +83,4 @@ class HabitManager {
   }
 }
 
-module.exports = HabitManager
+export default HabitManager

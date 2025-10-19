@@ -1,5 +1,7 @@
 //Test Application for Habit Tracker Module
-const habitManager = require('../src/index.js')
+import HabitManager from '../src/index.js'
+
+const habitManager = new HabitManager()
 
 console.log('Testing App for the Habit Tracker Module\n')
 

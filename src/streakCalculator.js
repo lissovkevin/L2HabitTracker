@@ -41,7 +41,7 @@ class StreakCalculator {
   }
 
   static isStreakBroken(completions, allowMissedDays = false, maxMissedDays = 0) {
-    if (!completions || completions.length === 0) { 
+    if (!completions || completions.length === 0) {
       return true
     }
 
@@ -84,4 +84,4 @@ class StreakCalculator {
   }
 }
 
-module.exports = StreakCalculator
+export default StreakCalculator

@@ -1,3 +1,3 @@
-const HabitManager = require('./habitManager.js')
+import HabitManager from './habitManager.js'
 
-module.exports = new HabitManager()
+export default HabitManager
